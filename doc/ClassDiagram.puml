@@ -22,7 +22,7 @@ class Polygone <T> {
     + Polygone(Polygone<T> poly)
     + getSommets( ) : Vector<Point2D<T>>
     + setSommets(Vector<Point2D<T>> listeSommets) : void
-    + addPoint(Point2D<T>) : void
+    + addSommet(Point2D<T>) : void
     + translate(T x, T y) : void
 }
 
