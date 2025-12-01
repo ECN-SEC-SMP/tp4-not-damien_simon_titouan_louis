@@ -5,11 +5,11 @@
 
 enum TypeCulture
 {
-    Blé,
-    Maïs,
-    Chanvre,
-    Vache,
-    Cochon,
+    BLE,  // blé
+    MAIS, // maïs
+    CHANVRE,
+    VACHE,
+    COCHON,
 };
 
 class ZA : public ZN, Constructible
