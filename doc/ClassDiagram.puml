@@ -1,0 +1,82 @@
+@startuml Class Diagram
+
+class Point2D <T> {
+    - x: T
+    - y: T
+
+    + Point2D (T x, T y)
+    + Point2D()
+    + Point2D(Point2D<T> p)
+    + getX( ) : T
+    + getY( ) : T
+    + setX(T y) : void
+    + setY(T y) : void
+    + translate(T x, T y) : void
+}
+
+class Polygone <T> {
+    - sommets : Vector<Point2D<T>>
+
+    + Polygone( )
+    + Polygone(Vector<Point2D<T>> listeSommets)
+    + Polygone(Polygone<T> poly)
+    + getSommets( ) : Vector<Point2D<T>>
+    + setSommets(Vector<Point2D<T>> listeSommets) : void
+    + addPoint(Point2D<T>) : void
+    + translate(T x, T y) : void
+}
+
+
+class Parcelle {
+    # type : string
+    # numero : int
+    # proprietaire : string
+    # surface : float
+    # forme : Polygone<int>
+    # pourcentageConstructible : int
+
+    + Parcelle(int num, string prop, Polygone<int,float> forme)
+    + Parcelle(Parcelle parc)
+    + getNumero() : int
+    + getProprietaire( ) : string
+    + getSurface( ) : float
+    + getForme( ) : Polygone<int,float>
+    + getType( ) : string
+    + setNumero(int n) : void
+    + setProprietaire(string prop ) : void
+    + setForme(Polygone<int> forme) : void
+}
+
+abstract class Constructible extends Parcelle {
+    {abstract} + getSurfaceConstructible() : float
+}
+
+class ZU extends Constructible {}
+
+class ZAU extends Constructible {}
+
+class ZN extends Parcelle {}
+
+class ZA extends ZN, Constructible {
+    - TypeCulture typeCulture
+    + getTypeCulture(): TypeCulture
+}
+
+enum TypeCulture {
+    Blé
+    Maïs
+    Chanvre
+    Vache
+    Cochon
+}
+
+
+
+Polygone "0..n" --> "0..n" Point2D
+Parcelle "1" --> "1" Polygone
+
+ZA "1" --> "1" TypeCulture
+
+
+
+@enduml
