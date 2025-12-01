@@ -11,3 +11,12 @@ TypeCulture ZA::getTypeCulture()
 {
     return this->typeCulture;
 }
+
+bool ZA::constructible(Polygone<float> surface_a_construire)
+{
+    bool constructible = true;
+    constructible = constructible && (surface_a_construire.getSurface() < 0.1 * this->getSurfaceConstructible());
+    constructible = constructible && (surface_a_construire.getSurface() < 200);
+
+    return constructible;
+}
