@@ -64,7 +64,7 @@ public:
      * 
      * @param prop (IN) Nouveau Propriétaire
      */
-    void setProprietaire(string prop);
+    void setProprietaire(std::string prop);
     /**
      * @brief Définit le polygone de la parcelle
      * 
