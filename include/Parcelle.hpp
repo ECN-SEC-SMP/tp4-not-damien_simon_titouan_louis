@@ -51,6 +51,12 @@ public:
      * @return std::string 
      */
     std::string getType();
+    /**
+     * @brief Donne le percentage constructible de la parcelle
+     * 
+     * @return int 
+     */
+    int getPercentageConstr();
 
     /* Setters */
     /**
