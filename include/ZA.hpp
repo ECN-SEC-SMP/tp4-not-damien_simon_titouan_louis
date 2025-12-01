@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "ZN.hpp"
 #include "Constructible.hpp"
 
@@ -28,4 +30,16 @@ public:
      * @return TypeCulture
      */
     TypeCulture getTypeCulture();
+
+    /**
+     * @brief Test si une surface remplit les conditions
+     * pour être constructible
+     *
+     * @param surface_a_construire
+     * @return true : La surface est constructible
+     * @return false : La surface n'est pas constructible
+     */
+    bool constructible(Polygone<float> surface_a_construire);
+
+    friend ostream &operator<<(ostream &out, ZA const &za);
 };
