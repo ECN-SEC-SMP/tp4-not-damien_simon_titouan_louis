@@ -77,15 +77,16 @@ void Parcelle::setForme(Polygone<float> forme)
 /* Methods */
 std::string Parcelle::toString() const
 {
-    std::string str = "Parcelle n°" + std::to_string(this->numero) + "\n"
-        + "\tType: " + this->type + "\n"
-        + "\tForme: " + "this->forme" + "\n"
-        + "\tPropriétaire: " + this->proprietaire + "\n"
-        + "\tSurface: " + std::to_string(this->surface) + "\n"
+    std::string str = "Parcelle n°" + std::to_string(this->numero) + "\n" 
+        + "\tType: " + this->type + "\n" 
+        + "\tForme: " + "this->forme" + "\n" 
+        + "\tPropriétaire: " + this->proprietaire + "\n" 
+        + "\tSurface: " + std::to_string(this->surface) + "\n" 
         + "\t%% constructible: " + std::to_string(this->pourcentageConstructible);
+    return str;
 }
 
-std::ostream & operator<< (std::ostream os, const Parcelle & parc)
+std::ostream &operator<<(std::ostream &os, const Parcelle &parc)
 {
     os << parc.toString();
     return os;
