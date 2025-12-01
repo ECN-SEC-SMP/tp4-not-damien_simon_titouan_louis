@@ -26,37 +26,37 @@ public:
      * 
      * @return int 
      */
-    int getNumero();
+    int getNumero() const;
     /**
      * @brief Get the Proprietaire object
      * 
      * @return std::string 
      */
-    std::string getProprietaire();
+    std::string getProprietaire() const;
     /**
      * @brief Donne la surface totale de la parcelle
      * 
      * @return float 
      */
-    float getSurface();
+    float getSurface() const;
     /**
      * @brief Donne le polygone correspondant à la parcelle
      * 
      * @return Polygone<float> 
      */
-    Polygone<float> getForme();
+    Polygone<float> getForme() const;
     /**
      * @brief Donne le type de parcelle
      * 
      * @return std::string 
      */
-    std::string getType();
+    std::string getType() const;
     /**
      * @brief Donne le percentage constructible de la parcelle
      * 
      * @return int 
      */
-    int getPercentageConstr();
+    int getPercentageConstr() const;
 
     /* Setters */
     /**
@@ -84,5 +84,7 @@ public:
      * 
      * @return std::string 
      */
-    std::string toString();
+    std::string toString() const;
+
+    friend std::ostream & operator<< (std::ostream os, const Parcelle & parc);
 };

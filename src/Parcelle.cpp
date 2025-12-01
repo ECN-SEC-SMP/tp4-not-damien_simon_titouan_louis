@@ -2,7 +2,7 @@
 
 /* Constructors */
 Parcelle::Parcelle(int num, std::string prop, Polygone<float> forme)
-    : numero(num), proprietaire(prop), pourcentageConstructible(-1), type("Inconnu")
+    : type("Inconnu"), numero(num), proprietaire(prop), pourcentageConstructible(-1)
 {
     this->setForme(forme);
 }
@@ -20,32 +20,32 @@ Parcelle::Parcelle(const Parcelle &parc)
 Parcelle::~Parcelle() = default;
 
 /* Getters */
-int Parcelle::getNumero()
+int Parcelle::getNumero() const
 {
     return this->numero;
 }
 
-std::string Parcelle::getProprietaire()
+std::string Parcelle::getProprietaire() const
 {
     return this->proprietaire;
 }
 
-float Parcelle::getSurface()
+float Parcelle::getSurface() const
 {
     return this->surface;
 }
 
-Polygone<float> Parcelle::getForme()
+Polygone<float> Parcelle::getForme() const
 {
     return this->forme;
 }
 
-std::string Parcelle::getType()
+std::string Parcelle::getType() const
 {
     return this->type;
 }
 
-int Parcelle::getPercentageConstr()
+int Parcelle::getPercentageConstr() const
 {
     return this->pourcentageConstructible;
 }
@@ -72,4 +72,21 @@ void Parcelle::setForme(Polygone<float> forme)
         this->surface += point0.getX() * point1.getY() - point1.getX() * point1.getY();
     }
     this->surface /= 2;
+}
+
+/* Methods */
+std::string Parcelle::toString() const
+{
+    std::string str = "Parcelle n°" + std::to_string(this->numero) + "\n"
+        + "\tType: " + this->type + "\n"
+        + "\tForme: " + "this->forme" + "\n"
+        + "\tPropriétaire: " + this->proprietaire + "\n"
+        + "\tSurface: " + std::to_string(this->surface) + "\n"
+        + "\t%% constructible: " + std::to_string(this->pourcentageConstructible);
+}
+
+std::ostream & operator<< (std::ostream os, const Parcelle & parc)
+{
+    os << parc.toString();
+    return os;
 }
