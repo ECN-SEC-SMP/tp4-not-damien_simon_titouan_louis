@@ -27,7 +27,7 @@ class Polygone <T> {
 }
 
 
-class Parcelle<T> {
+class Parcelle {
     # type : string
     # numero : int
     # proprietaire : string
