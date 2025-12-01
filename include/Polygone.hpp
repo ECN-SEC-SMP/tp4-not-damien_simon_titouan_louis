@@ -55,6 +55,12 @@ public:
     std::vector< Point2D<T> > getSommets() const; 
 
     /**
+     * @brief Donne la surface totale de la parcelle
+     * @return float 
+     */
+    float getSurface();
+
+    /**
      * @brief Remplace la liste actuelle des sommets.
      * @param listeSommets Le nouveau vecteur de points.
      */
@@ -90,6 +96,7 @@ public:
      * @return Une référence vers le flux de sortie.
      */
     friend std::ostream& operator<< <T>(std::ostream& os, Polygone<T> const& p);
+
 };
 
 // Implémentation des méthodes
@@ -97,6 +104,18 @@ public:
 template<typename T>
 std::vector< Point2D<T> > Polygone<T>::getSommets() const {
     return this->sommets;
+}
+
+template<typename T>
+float Polygone<T>::getSurface(){
+    float surface = 0;
+    for (size_t i = 0; i < this->sommets.size(); i++)
+    {
+        auto point0 = this->sommets.at(i);
+        auto point1 = this->sommets.at(i + 1);
+        surface += point0.getX() * point1.getY() - point1.getX() * point1.getY();
+    }
+    surface /= 2;
 }
 
 template<typename T>
