@@ -18,7 +18,7 @@ private:
     TypeCulture typeCulture;
 
 public:
-    ZA(TypeCulture typeCulture);
+    ZA(int num, std::string prop, Polygone<float> forme, TypeCulture typeCulture);
     ~ZA();
 
     TypeCulture getTypeCulture();
