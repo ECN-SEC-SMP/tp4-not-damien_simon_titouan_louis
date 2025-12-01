@@ -70,5 +70,5 @@ public:
      * 
      * @param forme (IN) Nouvelle le poligone de la parcelle
      */
-    void setForme(Polygone<int> forme);
+    void setForme(Polygone<float> forme);
 };
