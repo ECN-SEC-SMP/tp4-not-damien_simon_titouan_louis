@@ -24,6 +24,7 @@ class Polygone <T> {
     + setSommets(Vector<Point2D<T>> listeSommets) : void
     + addSommet(Point2D<T>) : void
     + translate(T x, T y) : void
+    + getSurface(): float
 }
 
 
@@ -45,6 +46,7 @@ class Parcelle {
     + setNumero(int n) : void
     + setProprietaire(string prop ) : void
     + setForme(Polygone<int> forme) : void
+    + toString() : string
 }
 
 abstract class Constructible extends Parcelle {
@@ -60,6 +62,7 @@ class ZN extends Parcelle {}
 class ZA extends ZN, Constructible {
     - TypeCulture typeCulture
     + getTypeCulture(): TypeCulture
+    + constructible(Polygone<float> zone)
 }
 
 enum TypeCulture {
