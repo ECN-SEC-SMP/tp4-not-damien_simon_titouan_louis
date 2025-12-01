@@ -6,6 +6,7 @@
 class ZN : public Parcelle
 {
 public:
+    /* Constructors */
     ZN(int num, std::string prop, Polygone<float> forme);
     ~ZN();
 };
