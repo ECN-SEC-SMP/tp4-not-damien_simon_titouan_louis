@@ -32,7 +32,7 @@ class Parcelle {
     # numero : int
     # proprietaire : string
     # surface : float
-    # forme : Polygone<int>
+    # forme : Polygone<float>
     # pourcentageConstructible : int
 
     + Parcelle(int num, string prop, Polygone<int,float> forme)
@@ -40,7 +40,7 @@ class Parcelle {
     + getNumero() : int
     + getProprietaire( ) : string
     + getSurface( ) : float
-    + getForme( ) : Polygone<int,float>
+    + getForme( ) : Polygone<float>
     + getType( ) : string
     + setNumero(int n) : void
     + setProprietaire(string prop ) : void
