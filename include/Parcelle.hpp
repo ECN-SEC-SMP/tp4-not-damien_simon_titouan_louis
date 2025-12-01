@@ -77,4 +77,12 @@ public:
      * @param forme (IN) Nouvelle le poligone de la parcelle
      */
     void setForme(Polygone<float> forme);
+
+    /* Methods */
+    /**
+     * @brief Donne les informations formatées de la parcelle 
+     * 
+     * @return std::string 
+     */
+    std::string toString();
 };
