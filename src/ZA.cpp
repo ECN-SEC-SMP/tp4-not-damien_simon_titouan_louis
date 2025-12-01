@@ -20,3 +20,11 @@ bool ZA::constructible(Polygone<float> surface_a_construire)
 
     return constructible;
 }
+
+friend ostream ZA::&operator<<(ostream &out, ZA const &za)
+{
+    out << this->to_string() << std::endl
+        << "\tType culture : " << za.getTypeCulture();
+
+    return out;
+}
