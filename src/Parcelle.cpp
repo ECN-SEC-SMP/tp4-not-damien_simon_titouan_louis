@@ -1,14 +1,13 @@
 #include "Parcelle.hpp"
 
-
 /* Constructors */
 Parcelle::Parcelle(int num, std::string prop, Polygone<float> forme)
-: numero(num), proprietaire(prop), pourcentageConstructible(-1), type("Inconnu") 
+    : numero(num), proprietaire(prop), pourcentageConstructible(-1), type("Inconnu")
 {
     this->setForme(forme);
 }
 
-Parcelle::Parcelle(const Parcelle & parc)
+Parcelle::Parcelle(const Parcelle &parc)
 {
     this->type = parc.type;
     this->numero = parc.numero;
@@ -19,7 +18,6 @@ Parcelle::Parcelle(const Parcelle & parc)
 }
 
 Parcelle::~Parcelle() = default;
-
 
 /* Getters */
 int Parcelle::getNumero()
@@ -52,7 +50,6 @@ int Parcelle::getPercentageConstr()
     return this->pourcentageConstructible;
 }
 
-
 /* Setters */
 void Parcelle::setNumero(int n)
 {
@@ -67,9 +64,12 @@ void Parcelle::setProprietaire(std::string prop)
 void Parcelle::setForme(Polygone<float> forme)
 {
     this->forme = forme;
-    for (auto &&point : forme.getSommets())
+    this->surface = 0;
+    for (size_t i = 0; i < forme.getSommets().size(); i++)
     {
-        
+        auto point0 = forme.getSommets().at(i);
+        auto point1 = forme.getSommets().at(i + 1);
+        this->surface += point0.getX() * point1.getY() - point1.getX() * point1.getY();
     }
-    
+    this->surface /= 2;
 }
