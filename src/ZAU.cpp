@@ -11,3 +11,6 @@ ZAU::ZAU(int num, string prop, Polygone<int, float> forme){
 ZAU::ZAU(Parcelle parc){
     Constructible(parc);
 }
+ZAU::~ZAU(){
+    ~Constructible();
+}

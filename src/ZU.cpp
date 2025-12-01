@@ -13,3 +13,6 @@ ZU::ZU(Parcelle parc, float surfaceConstruite){
     Constructible(parc);
     this->surfaceConstruite = surfaceConstruite;
 }
+ZU::~ZU(){
+    ~Constructible();
+}

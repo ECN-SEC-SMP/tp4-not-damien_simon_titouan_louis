@@ -8,4 +8,5 @@ class ZU: public Constructible{
         float getSurfaceConstructible() override;
         ZU(int num, string prop, Polygone<int, float> forme, float surfaceConstruite);
         ZU(Parcelle parc, float surfaceConstruite);
+        ~ZU();
 };
