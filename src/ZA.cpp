@@ -7,7 +7,7 @@ ZA::ZA(int num, std::string prop, Polygone<float> forme, TypeCulture typeCulture
 
 ZA::~ZA() = default;
 
-TypeCulture ZA::getTypeCulture()
+TypeCulture ZA::getTypeCulture() const
 {
     return this->typeCulture;
 }
@@ -21,9 +21,9 @@ bool ZA::constructible(Polygone<float> surface_a_construire)
     return constructible;
 }
 
-friend ostream ZA::&operator<<(ostream &out, ZA const &za)
+std::ostream &operator<<(std::ostream &out, ZA const &za)
 {
-    out << this->to_string() << std::endl
+    out << za.toString() << std::endl
         << "\tType culture : " << za.getTypeCulture();
 
     return out;

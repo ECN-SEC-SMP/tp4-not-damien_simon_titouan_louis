@@ -29,7 +29,7 @@ public:
      *
      * @return TypeCulture
      */
-    TypeCulture getTypeCulture();
+    TypeCulture getTypeCulture() const;
 
     /**
      * @brief Test si une surface remplit les conditions
@@ -41,5 +41,5 @@ public:
      */
     bool constructible(Polygone<float> surface_a_construire);
 
-    friend ostream &operator<<(ostream &out, ZA const &za);
+    friend std::ostream &operator<<(std::ostream &out, ZA const &za);
 };
