@@ -1,16 +1,15 @@
 #include "ZAU.hpp"
-float ZAU::getSurfaceConstructible(){
-    return getSurface() * getPourcentageConstructible();
-}
 
-//Constructors
-ZAU::ZAU(int num, string prop, Polygone<int, float> forme){
-    Constructible(num, prop, forme); 
-}
+// Constructors
+ZAU::ZAU(int num, std::string prop, Polygone<float> forme)
+: Constructible(num, prop, forme) {}
 
-ZAU::ZAU(Parcelle parc){
-    Constructible(parc);
-}
-ZAU::~ZAU(){
-    ~Constructible();
+ZAU::ZAU(const ZAU & zau)
+: Constructible(zau.numero, zau.proprietaire, zau.forme) {}
+
+ZAU::~ZAU() = default;
+
+float ZAU::getSurfaceConstructible() const
+{
+    return this->surface * this->pourcentageConstructible;
 }
