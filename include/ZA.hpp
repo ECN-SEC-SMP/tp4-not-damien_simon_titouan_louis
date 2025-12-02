@@ -14,7 +14,7 @@ enum TypeCulture
     COCHON,
 };
 
-class ZA : public ZN, Constructible
+class ZA : public ZN, public Constructible
 {
 private:
     TypeCulture typeCulture;

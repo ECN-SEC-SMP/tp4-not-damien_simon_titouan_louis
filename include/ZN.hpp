@@ -3,7 +3,7 @@
 #include "Parcelle.hpp"
 #include "Polygone.hpp"
 
-class ZN : public Parcelle
+class ZN : virtual public Parcelle
 {
 public:
     /* Constructors */
