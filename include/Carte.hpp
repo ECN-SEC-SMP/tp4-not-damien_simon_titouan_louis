@@ -21,8 +21,7 @@ public:
      * @brief Constructeur avec initialisation.
      * @param listeSommets Un vecteur de Parcelle pour initialiser la carte.
      */
-    Carte(std::vector< Parcelle > const& ListeParcelles)
-        : Parcelles(ListeParcelles) {}
+    Carte(std::vector< Parcelle > const& ListeParcelles);
 
 
     /**
