@@ -27,13 +27,14 @@ TEST(ZUTest, CopyConstructor) {
     
     Polygone<float> rectangle(points);
     
-    ZU zu1(7, std::string("OriginalZU"), rectangle, 2.0f);
+    ZU zu1(7, std::string("OriginalZU"), rectangle, 2.0f, 100.0f);
     ZU zu2(zu1);  
     
     EXPECT_EQ(zu2.getType(), "ZU");
     EXPECT_EQ(zu2.getNumero(), 7);
     EXPECT_EQ(zu2.getProprietaire(), "OriginalZU");
     EXPECT_FLOAT_EQ(zu2.getSurface(), 6.0f);
+    EXPECT_FLOAT_EQ(zu2.getSurfaceConstructible(), 4.0f);
 }
 
 int main(int argc, char **argv) {

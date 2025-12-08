@@ -1,11 +1,22 @@
 #include "ZU.hpp"
 
 //Constructors
-ZU::ZU(int num, std::string prop, Polygone<float> forme, float surfaceConstruite)
-: Constructible(num, prop, forme), surfaceConstruite(surfaceConstruite) {}
+ZU::ZU(int num, std::string prop, Polygone<float> forme, float surfaceConstruite, float pourcentageConstructible)
+: Parcelle(num, prop, forme),Constructible(num, prop, forme), surfaceConstruite(surfaceConstruite) {
+    this->type = "ZU";
+    this->pourcentageConstructible = pourcentageConstructible;
+}
 
 ZU::ZU(const ZU & zu)
-: Constructible(zu.numero, zu.proprietaire, zu.forme), surfaceConstruite(zu.surfaceConstruite) {}
+: Parcelle(zu.numero, zu.proprietaire, zu.forme), Constructible(zu.numero, zu.proprietaire, zu.forme), surfaceConstruite(zu.surfaceConstruite) {
+    this->type = "ZU";
+    this->pourcentageConstructible = zu.pourcentageConstructible;
+}
 
 ZU::~ZU() = default;
+
+float ZU::getSurfaceConstructible() const 
+{
+    return this->surface * this->pourcentageConstructible/ 100.0f - surfaceConstruite;
+}
 

@@ -22,12 +22,12 @@ int main(int argc, char const *argv[])
     // std::cout << za << std::endl;
 
     // Polygone<float> zone({Point2D<float>(0, 0), Point2D<float>(1, 0), Point2D<float>(1, 1), Point2D<float>(0, 1)});
-    ZAU zau(3, "Moiii", zone);
+    ZAU zau(3, "Moiii", zone, 50.0f);
     zau.getSurfaceConstructible();
     // std::cout << zau << std::endl;
 
     // Polygone<float> zone({Point2D<float>(0, 0), Point2D<float>(1, 0), Point2D<float>(1, 1), Point2D<float>(0, 1)});
-    ZU zu(4, "Moiiii", zone, 10);
+    ZU zu(4, "Moiiii", zone, 15.0f,10.0f);
     // std::cout << zu << std::endl;
 
     parcelles.push_back(zn);
