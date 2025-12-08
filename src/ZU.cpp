@@ -1,7 +1,7 @@
 #include "ZU.hpp"
 
 //Constructors
-ZU::ZU(int num, std::string prop, Polygone<float> forme, float surfaceConstruite, float pourcentageConstructible)
+ZU::ZU(int num, std::string prop, Polygone<float> forme, float surfaceConstruite, int pourcentageConstructible)
 : Parcelle(num, prop, forme),Constructible(num, prop, forme), surfaceConstruite(surfaceConstruite) {
     this->type = "ZU";
     this->pourcentageConstructible = pourcentageConstructible;
