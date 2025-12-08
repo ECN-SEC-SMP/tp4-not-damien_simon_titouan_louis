@@ -7,6 +7,9 @@ ZN::ZN(int num, std::string prop, Polygone<float> forme)
     this->pourcentageConstructible = 0;
 }
 
+ZN::ZN(const ZN &zn)
+    : ZN(zn.numero, zn.proprietaire, zn.forme) {}
+
 ZN::~ZN() = default;
 
 std::ostream &operator<<(std::ostream &out, ZN const &zn)
