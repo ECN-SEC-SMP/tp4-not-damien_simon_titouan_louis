@@ -69,14 +69,7 @@ void Parcelle::setProprietaire(std::string prop)
 void Parcelle::setForme(Polygone<float> forme)
 {
     this->forme = forme;
-    this->surface = 0;
-    for (size_t i = 0; i < forme.getSommets().size(); i++)
-    {
-        auto point0 = forme.getSommets().at(i);
-        auto point1 = forme.getSommets().at(i + 1);
-        this->surface += point0.getX() * point1.getY() - point1.getX() * point1.getY();
-    }
-    this->surface /= 2;
+    this->surface = forme.getSurface();
 }
 
 /* Methods */
