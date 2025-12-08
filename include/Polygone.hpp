@@ -109,11 +109,11 @@ std::vector< Point2D<T> > Polygone<T>::getSommets() const {
 template<typename T>
 float Polygone<T>::getSurface(){
     float surface = 0;
-    for (size_t i = 0; i < this->sommets.size(); i++)
+    for (size_t i = 0; i < this->sommets.size()-1; i++)
     {
         auto point0 = this->sommets.at(i);
         auto point1 = this->sommets.at(i + 1);
-        surface += point0.getX() * point1.getY() - point1.getX() * point1.getY();
+        surface += point0.getX() * point1.getY() - point1.getX() * point0.getY();
     }
     return surface /= 2;
 
