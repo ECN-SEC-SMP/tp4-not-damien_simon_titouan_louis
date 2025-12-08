@@ -27,12 +27,12 @@ public:
     /**
      * @brief Enregistre le fichier.
      */
-    void save(std::string file); 
+    void save(std::string filename); 
 
 
     /**
      * @brief Lit le fichier.
      */
-    void load(std::string file); 
+    void load(std::string filename); 
 
 };

@@ -79,6 +79,16 @@ std::string Parcelle::toString() const
     return str;
 }
 
+std::string Parcelle::serialize() const
+{
+    std::string result = this->type;
+    result += " " + std::to_string(this->numero);
+    result += " " + this->proprietaire;
+    result += "\n"  "this->forme";
+    result += "\n";
+    return result;
+}
+
 std::ostream &operator<<(std::ostream &os, const Parcelle &parc)
 {
     os << parc.toString();

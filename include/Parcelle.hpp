@@ -87,6 +87,12 @@ public:
      * @return std::string
      */
     std::string toString() const;
+    /**
+     * @brief Serialize la parcelle pour l'écriture dans un fichier
+     *
+     * @return std::string
+     */
+    virtual std::string serialize() const;
 
     friend std::ostream &operator<<(std::ostream &os, const Parcelle &parc);
 };
