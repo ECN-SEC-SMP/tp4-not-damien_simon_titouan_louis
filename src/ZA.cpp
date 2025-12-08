@@ -7,6 +7,9 @@ ZA::ZA(int num, std::string prop, Polygone<float> forme, TypeCulture typeCulture
     this->pourcentageConstructible = pourcentageConstructible;
 }
 
+ZA::ZA(const ZA &za)
+    : ZA(za.numero, za.proprietaire, za.forme, za.typeCulture, za.pourcentageConstructible) {}
+
 ZA::~ZA() = default;
 
 TypeCulture ZA::getTypeCulture() const
