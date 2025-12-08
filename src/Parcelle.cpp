@@ -1,6 +1,11 @@
 #include "Parcelle.hpp"
 
 /* Constructors */
+Parcelle::Parcelle()
+    : type("Inconnu"), numero(0), proprietaire(""), pourcentageConstructible(-1), forme(), surface(0.0f)
+{
+}
+
 Parcelle::Parcelle(int num, std::string prop, Polygone<float> forme)
     : type("Inconnu"), numero(num), proprietaire(prop), pourcentageConstructible(-1)
 {
@@ -77,12 +82,7 @@ void Parcelle::setForme(Polygone<float> forme)
 /* Methods */
 std::string Parcelle::toString() const
 {
-    std::string str = "Parcelle n°" + std::to_string(this->numero) + "\n" 
-        + "\tType: " + this->type + "\n" 
-        + "\tForme: " + "this->forme" + "\n" 
-        + "\tPropriétaire: " + this->proprietaire + "\n" 
-        + "\tSurface: " + std::to_string(this->surface) + "\n" 
-        + "\t%% constructible: " + std::to_string(this->pourcentageConstructible);
+    std::string str = "Parcelle n°" + std::to_string(this->numero) + "\n" + "\tType: " + this->type + "\n" + "\tForme: " + "this->forme" + "\n" + "\tPropriétaire: " + this->proprietaire + "\n" + "\tSurface: " + std::to_string(this->surface) + "\n" + "\t%% constructible: " + std::to_string(this->pourcentageConstructible);
     return str;
 }
 
