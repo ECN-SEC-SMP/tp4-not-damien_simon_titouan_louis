@@ -1,7 +1,7 @@
 #include "ZA.hpp"
 
 ZA::ZA(int num, std::string prop, Polygone<float> forme, TypeCulture typeCulture, int pourcentageConstructible)
-    : ZN(num, prop, forme), Constructible(num, prop, forme), typeCulture(typeCulture), Parcelle(num, prop, forme)
+    : Parcelle(num, prop, forme), ZN(num, prop, forme), Constructible(num, prop, forme), typeCulture(typeCulture)
 {
     this->type = "Zone Agricole";
     this->pourcentageConstructible = pourcentageConstructible;
