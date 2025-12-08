@@ -47,6 +47,7 @@ class Parcelle {
     + setProprietaire(string prop ) : void
     + setForme(Polygone<int> forme) : void
     + toString() : string
+    {abstract} + serialize() : string
 }
 
 abstract class Constructible extends Parcelle {
@@ -73,6 +74,12 @@ enum TypeCulture {
     Cochon
 }
 
+
+class Carte {
+    - parcelles : vector<Parcelle>
+    + save(string file) : void
+    + load(string file) : void
+}
 
 
 Polygone "0..n" --> "0..n" Point2D
