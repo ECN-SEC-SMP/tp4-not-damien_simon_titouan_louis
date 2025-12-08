@@ -9,7 +9,7 @@ class Constructible : virtual public Parcelle
 {
 public:
     Constructible(int num, std::string prop, Polygone<float> forme);
-    Constructible(Parcelle parc);
+    Constructible( const Constructible& constructible );
     ~Constructible();
     virtual float getSurfaceConstructible() const = 0;
 };
