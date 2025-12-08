@@ -8,3 +8,11 @@ ZN::ZN(int num, std::string prop, Polygone<float> forme)
 }
 
 ZN::~ZN() = default;
+
+std::ostream &operator<<(std::ostream &out, ZN const &zn)
+{
+    out << zn.toString() << std::endl
+        << "\tType culture : " << zn.getTypeCulture();
+
+    return out;
+}
