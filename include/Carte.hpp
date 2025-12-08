@@ -15,7 +15,7 @@ public:
      * @brief Constructeur par défaut.
      * Crée une carte vide.
      */
-    Carte() {} 
+    Carte();
 
     /**
      * @brief Constructeur avec initialisation.
