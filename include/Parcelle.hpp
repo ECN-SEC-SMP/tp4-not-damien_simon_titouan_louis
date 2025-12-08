@@ -11,9 +11,9 @@ protected:
     std::string type;
     int numero;
     std::string proprietaire;
-    float surface;
-    Polygone<float> forme;
     int pourcentageConstructible;
+    Polygone<float> forme;
+    float surface;
 
 public:
     /* Constructors */
