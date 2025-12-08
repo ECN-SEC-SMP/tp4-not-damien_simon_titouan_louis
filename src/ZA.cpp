@@ -1,8 +1,10 @@
 #include "ZA.hpp"
 
-ZA::ZA(int num, std::string prop, Polygone<float> forme, TypeCulture typeCulture)
+ZA::ZA(int num, std::string prop, Polygone<float> forme, TypeCulture typeCulture, int pourcentageConstructible)
     : ZN(num, prop, forme), Constructible(num, prop, forme), typeCulture(typeCulture)
 {
+    this->type = "Zone Agricole";
+    this->pourcentageConstructible = pourcentageConstructible;
 }
 
 ZA::~ZA() = default;
