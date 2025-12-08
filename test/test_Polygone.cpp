@@ -51,6 +51,8 @@ TEST(PolygoneTest, replace) {
 
 
 
+
+
 // Test trnaslate
 TEST(PolygoneTest, translate) {
     std::vector<Point2D<int>> points;
@@ -87,6 +89,34 @@ TEST(PolygoneTest, surface) {
     EXPECT_EQ(surf, 1);
 
 }
+
+TEST(PolygoneTest, copieprof) {
+    std::vector<Point2D<int>> points;
+    points.push_back(Point2D<int>(0, 0));
+    points.push_back(Point2D<int>(1, 0));
+    points.push_back(Point2D<int>(1, 1));
+    points.push_back(Point2D<int>(0, 1));
+
+    Polygone<int> carre(points);
+    Polygone<int> carrev2(carre);  
+
+
+    carre.translate(1, 1);
+
+
+    auto sommetsCarre   = carre.getSommets();
+    auto sommetsCarrev2 = carrev2.getSommets();
+
+
+    ASSERT_EQ(sommetsCarre.size(), sommetsCarrev2.size());
+
+ 
+    for (size_t i = 0; i < sommetsCarre.size(); ++i) {
+        EXPECT_EQ(sommetsCarrev2[i].getX() + 1, sommetsCarre[i].getX());
+        EXPECT_EQ(sommetsCarrev2[i].getY() + 1, sommetsCarre[i].getY());
+    }
+}
+
 
 
 
