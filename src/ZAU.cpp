@@ -8,8 +8,3 @@ ZAU::ZAU(const ZAU & zau)
 : Constructible(zau.numero, zau.proprietaire, zau.forme) {}
 
 ZAU::~ZAU() = default;
-
-float ZAU::getSurfaceConstructible() const
-{
-    return this->surface * this->pourcentageConstructible;
-}

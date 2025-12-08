@@ -9,6 +9,3 @@ ZU::ZU(const ZU & zu)
 
 ZU::~ZU() = default;
 
-float ZU::getSurfaceConstructible() const {
-    return (this->surface * this->pourcentageConstructible) - this->surfaceConstruite;
-}
