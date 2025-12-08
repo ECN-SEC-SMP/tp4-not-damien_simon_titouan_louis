@@ -46,6 +46,12 @@ public:
     Polygone(std::vector< Point2D<T> > const& listeSommets)
         : sommets(listeSommets) {}
 
+    /**
+     * @brief Constructeur de copie.
+     * @param pol Le polygone à copier.
+     */
+    Polygone(Polygone<T> const &pol);
+
     // Setteurs et Getters
 
     /**
@@ -98,6 +104,11 @@ public:
     friend std::ostream& operator<< <T>(std::ostream& os, Polygone<T> const& p);
 
 };
+
+template<typename T>
+Polygone<T>::Polygone(Polygone<T> const& pol)
+    : sommets(pol.sommets) {}
+
 
 // Implémentation des méthodes
 
