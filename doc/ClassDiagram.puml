@@ -50,15 +50,27 @@ class Parcelle {
     {abstract} + serialize() : string
 }
 
-abstract class Constructible extends Parcelle {
-    {abstract} + getSurfaceConstructible() : float
+class Constructible extends Parcelle {
+    + Constructible(int num, string prop, Polygone<float> forme, float pourcentageConstructible)
+    + Constructible( const Constructible& constructible )
+    + getSurfaceConstructible() : float const
 }
 
-class ZU extends Constructible {}
+class ZU extends Constructible {
+    - surfaceConstruite: float
+    + ZU(int num, string prop, Polygone<float> forme, float surfaceConstruite, int pourcentageConstructible);
+    + ZU(const ZU & zu);
+}
 
-class ZAU extends Constructible {}
+class ZAU extends Constructible {
+    + ZAU(int num, string prop, Polygone<float> forme, float pourcentageConstructible)
+    + ZAU(const ZAU & zau)
+}
 
-class ZN extends Parcelle {}
+class ZN extends Parcelle {
+    + ZN(int num, string prop, Polygone<float> forme)
+    + ZN(const ZN &zn)
+}
 
 class ZA extends ZN, Constructible {
     - TypeCulture typeCulture
@@ -67,13 +79,12 @@ class ZA extends ZN, Constructible {
 }
 
 enum TypeCulture {
-    Blé
-    Maïs
-    Chanvre
-    Vache
-    Cochon
+    BLE
+    MAIS
+    CHANVRE
+    VACHE
+    COCHON
 }
-
 
 class Carte {
     - parcelles : vector<Parcelle>
