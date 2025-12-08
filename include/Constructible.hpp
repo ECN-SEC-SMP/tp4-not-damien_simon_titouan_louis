@@ -11,5 +11,5 @@ public:
     Constructible(int num, std::string prop, Polygone<float> forme);
     Constructible( const Constructible& constructible );
     ~Constructible();
-    float getSurfaceConstructible() const;
+    virtual float getSurfaceConstructible() const = 0;
 };
