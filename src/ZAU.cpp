@@ -16,8 +16,3 @@ ZAU::ZAU(const ZAU & zau)
 }
 
 ZAU::~ZAU() = default;
-
-float ZAU::getSurfaceConstructible() const
-{
-    return this->surface * this->pourcentageConstructible / 100.0f;
-}
