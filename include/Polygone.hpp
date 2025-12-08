@@ -115,7 +115,8 @@ float Polygone<T>::getSurface(){
         auto point1 = this->sommets.at(i + 1);
         surface += point0.getX() * point1.getY() - point1.getX() * point1.getY();
     }
-    surface /= 2;
+    return surface /= 2;
+
 }
 
 template<typename T>
