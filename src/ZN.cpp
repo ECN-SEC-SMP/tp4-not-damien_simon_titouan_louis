@@ -11,8 +11,7 @@ ZN::~ZN() = default;
 
 std::ostream &operator<<(std::ostream &out, ZN const &zn)
 {
-    out << zn.toString() << std::endl
-        << "\tType culture : " << zn.getTypeCulture();
+    out << zn.toString() << std::endl;
 
     return out;
 }
