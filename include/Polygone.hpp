@@ -89,11 +89,18 @@ public:
     void translate(T x, T y);
 
     /**
-     * @brief Affiche le contenu du polygone dans un flux.
+     * @brief Donne les informations formatées du polygone
      * Format de sortie : Polygone [Point1, Point2, ...]
      * @param os Le flux de sortie.
      */
-    virtual void afficher(std::ostream& os) const;
+    std::string toString() const;
+
+    /**
+     * @brief Serialize le polygone pour l'écriture dans un fichier
+     *
+     * @return std::string
+     */
+    std::string serialize() const;
 
     /**
      * @brief Surcharge de l'opérateur de flux pour l'affichage standard.
@@ -149,7 +156,8 @@ void Polygone<T>::translate(T x, T y) {
 }
 
 template<typename T>
-void Polygone<T>::afficher(std::ostream& os) const {
+std::string Polygone<T>::toString() const {
+    std::ostringstream os;
     os << "Polygone [";
     for (size_t i = 0; i < sommets.size(); ++i) {
         os << sommets[i]; // Utilise l'opérateur << de Point2D
@@ -158,10 +166,27 @@ void Polygone<T>::afficher(std::ostream& os) const {
         }
     }
     os << "]";
+    return os.str();
+}
+
+template<typename T>
+std::string Polygone<T>::serialize() const {
+    std::ostringstream os;
+    os << "[";
+    for (auto &&point : this->sommets)
+    {
+        os << point;
+        if (point != this->sommets.back())
+        {
+            os << ";";
+        }
+    }
+    os << "]";
+    return os.str();
 }
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Polygone<T> const& p) {
-    p.afficher(os);
+    os << p.toString();
     return os;
 }

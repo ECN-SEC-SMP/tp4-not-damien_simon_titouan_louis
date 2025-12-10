@@ -75,7 +75,13 @@ void Parcelle::setForme(Polygone<float> forme)
 /* Methods */
 std::string Parcelle::toString() const
 {
-    std::string str = "Parcelle n°" + std::to_string(this->numero) + "\n" + "\tType: " + this->type + "\n" + "\tForme: " + "this->forme" + "\n" + "\tPropriétaire: " + this->proprietaire + "\n" + "\tSurface: " + std::to_string(this->surface) + "\n" + "\t%% constructible: " + std::to_string(this->pourcentageConstructible);
+    std::string str = "Parcelle n°";
+    str += std::to_string(this->numero) + "\n";
+    str += "\tType: " + this->type + "\n";
+    str += "\tForme: " + this->forme.toString() + "\n";
+    str += "\tPropriétaire: " + this->proprietaire + "\n";
+    str += "\tSurface: " + std::to_string(this->surface) + "\n";
+    str += "\t%% constructible: " + std::to_string(this->pourcentageConstructible);
     return str;
 }
 
@@ -84,7 +90,7 @@ std::string Parcelle::serialize() const
     std::string result = this->type;
     result += " " + std::to_string(this->numero);
     result += " " + this->proprietaire;
-    result += "\n"  "this->forme";
+    result += "\n" + this->forme.serialize();
     result += "\n";
     return result;
 }

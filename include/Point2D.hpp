@@ -98,6 +98,13 @@ public:
     void translate(T a, T b);
 
     /**
+     * @brief Serialize le point 2D pour l'écriture dans un fichier
+     * 
+     * @return std::string 
+     */
+    std::string serialize() const;
+
+    /**
      * @brief Surcharge de l'opérateur de flux pour l'affichage.
      * @param s Le flux de sortie (ex: std::cout).
      * @param p Le point à afficher.
@@ -169,6 +176,12 @@ void Point2D<T>::translate(T a, T b)
 {
     this->x += a;
     this->y += b;
+}
+
+template <typename T>
+std::string Point2D<T>::serialize() const
+{
+    return std::to_string(this->x) + "," + std::to_string(this->y);
 }
 
 template <typename T>
