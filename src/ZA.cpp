@@ -3,7 +3,7 @@
 ZA::ZA(int num, std::string prop, Polygone<float> forme, TypeCulture typeCulture, int pourcentageConstructible)
     : Parcelle(num, prop, forme), ZN(num, prop, forme), Constructible(num, prop, forme), typeCulture(typeCulture)
 {
-    this->type = "Zone Agricole";
+    this->type = "ZA";
     this->pourcentageConstructible = pourcentageConstructible;
 }
 

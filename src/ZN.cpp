@@ -3,7 +3,7 @@
 ZN::ZN(int num, std::string prop, Polygone<float> forme)
     : Parcelle(num, prop, forme)
 {
-    this->type = "Zone Naturelle et Forestière";
+    this->type = "ZN";
     this->pourcentageConstructible = 0;
 }
 
