@@ -98,11 +98,19 @@ public:
     void translate(T a, T b);
 
     /**
-     * @brief Serialize le point 2D pour l'écriture dans un fichier
+     * @brief Sérialise le point 2D pour l'écriture dans un fichier
      * 
      * @return std::string 
      */
     std::string serialize() const;
+
+    /**
+     * @brief Désérialise le point 2D pour la lecture d'un fichier
+     * 
+     * @param input (IN) String à désérialiser
+     * @return Point2D<T> 
+     */
+    static Point2D<T> deserialize(std::string input);
 
     /**
      * @brief Surcharge de l'opérateur de flux pour l'affichage.
@@ -182,6 +190,18 @@ template <typename T>
 std::string Point2D<T>::serialize() const
 {
     return std::to_string(this->x) + "," + std::to_string(this->y);
+}
+
+template <typename T>
+Point2D<T> Point2D<T>::deserialize(std::string input) 
+{
+    T x, y;
+    std::istringstream strstr(input);
+    strstr >> x;
+    strstr.ignore(1, ",");
+    strstr >> y;
+    
+    return Point2D<T>(x, y);
 }
 
 template <typename T>

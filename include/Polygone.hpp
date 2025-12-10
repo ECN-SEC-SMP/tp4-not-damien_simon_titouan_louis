@@ -103,6 +103,14 @@ public:
     std::string serialize() const;
 
     /**
+     * @brief Désérialise le polygone pour la lecture d'un fichier
+     * 
+     * @param input (IN) String à désérialiser
+     * @return Polygone<T> 
+     */
+    static Polygone<T> deserialize(std::string input);
+
+    /**
      * @brief Surcharge de l'opérateur de flux pour l'affichage standard.
      * @param os Le flux de sortie (ex: std::cout).
      * @param p Le polygone à afficher.
@@ -183,6 +191,25 @@ std::string Polygone<T>::serialize() const {
     }
     os << "]";
     return os.str();
+}
+
+template <typename T>
+Polygone<T> Polygone<T>::deserialize(std::string input) 
+{
+    // Remove '[]' chars
+    input->pop_back();
+    input->erase(input->begin());
+
+    // Get all points
+    std::vector<Point2D<float>> points;
+    for (auto &&point_str : Helper::split(input, ";"))
+    {
+        float x, y;
+        sscanf(point_str.c_str(), "%f,%f", &x, &y);
+        points.push_back(Point2D<float>(x, y));
+    }
+
+    return Polygone<T>(points);
 }
 
 template<typename T>
