@@ -185,32 +185,25 @@ std::string Polygone<T>::serialize() const {
     std::ostringstream os;
     for (size_t i = 0; i < this->sommets.size(); i++)
     {
-        os << this->sommets.at(i);
+        os << this->sommets.at(i).serialize();
         if (i < this->sommets.size() - 1)
         {
             os << ";";
         }
     }
-    os << "]";
     return os.str();
 }
 
 template <typename T>
 Polygone<T> Polygone<T>::deserialize(std::string input) 
 {
-    // Remove '[]' chars
-    input.pop_back();
-    input.erase(input.begin());
-
     // Get all points
-    std::vector<Point2D<float>> points;
+    std::vector<Point2D<T>> points;
     for (auto &&point_str : Helper::split(input, ";"))
     {
-        float x, y;
-        sscanf(point_str.c_str(), "%f,%f", &x, &y);
-        points.push_back(Point2D<float>(x, y));
+        auto point = Point2D<float>::deserialize(point_str);    
+        points.push_back(point);
     }
-
     return Polygone<T>(points);
 }
 
