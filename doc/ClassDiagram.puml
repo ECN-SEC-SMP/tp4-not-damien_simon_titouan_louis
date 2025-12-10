@@ -22,8 +22,9 @@ class Polygone <T> {
     + Polygone(Polygone<T> poly)
     + getSommets( ) : Vector<Point2D<T>>
     + setSommets(Vector<Point2D<T>> listeSommets) : void
-    + addPoint(Point2D<T>) : void
+    + addSommet(Point2D<T>) : void
     + translate(T x, T y) : void
+    + getSurface(): float
 }
 
 
@@ -32,44 +33,64 @@ class Parcelle {
     # numero : int
     # proprietaire : string
     # surface : float
-    # forme : Polygone<int>
+    # forme : Polygone<float>
     # pourcentageConstructible : int
 
-    + Parcelle(int num, string prop, Polygone<int,float> forme)
+    + Parcelle(int num, string prop, Polygone<float> forme)
     + Parcelle(Parcelle parc)
     + getNumero() : int
     + getProprietaire( ) : string
     + getSurface( ) : float
-    + getForme( ) : Polygone<int,float>
+    + getForme( ) : Polygone<float>
     + getType( ) : string
     + setNumero(int n) : void
     + setProprietaire(string prop ) : void
     + setForme(Polygone<int> forme) : void
+    + toString() : string
+    {abstract} + serialize() : string
 }
 
-abstract class Constructible extends Parcelle {
-    {abstract} + getSurfaceConstructible() : float
+class Constructible extends Parcelle {
+    + Constructible(int num, string prop, Polygone<float> forme, float pourcentageConstructible)
+    + Constructible( const Constructible& constructible )
+    + getSurfaceConstructible() : float const
 }
 
-class ZU extends Constructible {}
+class ZU extends Constructible {
+    - surfaceConstruite: float
+    + ZU(int num, string prop, Polygone<float> forme, float surfaceConstruite, int pourcentageConstructible);
+    + ZU(const ZU & zu);
+}
 
-class ZAU extends Constructible {}
+class ZAU extends Constructible {
+    + ZAU(int num, string prop, Polygone<float> forme, float pourcentageConstructible)
+    + ZAU(const ZAU & zau)
+}
 
-class ZN extends Parcelle {}
+class ZN extends Parcelle {
+    + ZN(int num, string prop, Polygone<float> forme)
+    + ZN(const ZN &zn)
+}
 
 class ZA extends ZN, Constructible {
     - TypeCulture typeCulture
     + getTypeCulture(): TypeCulture
+    + constructible(Polygone<float> zone)
 }
 
 enum TypeCulture {
-    Blé
-    Maïs
-    Chanvre
-    Vache
-    Cochon
+    BLE
+    MAIS
+    CHANVRE
+    VACHE
+    COCHON
 }
 
+class Carte {
+    - parcelles : vector<Parcelle>
+    + save(string file) : void
+    + load(string file) : void
+}
 
 
 Polygone "0..n" --> "0..n" Point2D
