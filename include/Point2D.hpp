@@ -198,7 +198,7 @@ Point2D<T> Point2D<T>::deserialize(std::string input)
     T x, y;
     std::istringstream strstr(input);
     strstr >> x;
-    strstr.ignore(1, ",");
+    strstr.ignore(1, ',');
     strstr >> y;
     
     return Point2D<T>(x, y);

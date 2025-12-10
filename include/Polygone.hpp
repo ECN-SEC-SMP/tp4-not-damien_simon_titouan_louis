@@ -8,7 +8,10 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <sstream>
+
 #include "Point2D.hpp"
+#include "Helper.hpp"
 
 
 template<typename T>
@@ -180,11 +183,10 @@ std::string Polygone<T>::toString() const {
 template<typename T>
 std::string Polygone<T>::serialize() const {
     std::ostringstream os;
-    os << "[";
-    for (auto &&point : this->sommets)
+    for (size_t i = 0; i < this->sommets.size(); i++)
     {
-        os << point;
-        if (point != this->sommets.back())
+        os << this->sommets.at(i);
+        if (i < this->sommets.size() - 1)
         {
             os << ";";
         }
@@ -197,8 +199,8 @@ template <typename T>
 Polygone<T> Polygone<T>::deserialize(std::string input) 
 {
     // Remove '[]' chars
-    input->pop_back();
-    input->erase(input->begin());
+    input.pop_back();
+    input.erase(input.begin());
 
     // Get all points
     std::vector<Point2D<float>> points;
