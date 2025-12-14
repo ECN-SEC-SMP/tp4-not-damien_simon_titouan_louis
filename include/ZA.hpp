@@ -43,6 +43,13 @@ public:
     bool constructible(Polygone<float> surface_a_construire);
 
     /**
+     * @brief Serialize la parcelle pour l'écriture dans un fichier
+     *
+     * @return std::string
+     */
+    std::string serialize() const;
+
+    /**
      * @brief Désérialise l'objet pour la lecture d'un fichier
      * 
      * @param input (IN) String à désérialiser

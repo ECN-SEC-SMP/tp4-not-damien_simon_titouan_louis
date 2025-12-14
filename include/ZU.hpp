@@ -12,6 +12,15 @@ class ZU: public Constructible{
     ZU(const ZU & zu);
     ~ZU();
 
+    float getSurfaceConstructible() const ;
+
+    /**
+     * @brief Serialize la parcelle pour l'écriture dans un fichier
+     *
+     * @return std::string
+     */
+    std::string serialize() const;
+
     /**
      * @brief Désérialise l'objet pour la lecture d'un fichier
      * 
@@ -19,6 +28,4 @@ class ZU: public Constructible{
      * @return ZU 
      */
     static ZU deserialize(std::string input);
-
-    float getSurfaceConstructible() const ;
 };

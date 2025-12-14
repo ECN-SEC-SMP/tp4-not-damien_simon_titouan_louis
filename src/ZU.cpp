@@ -20,6 +20,18 @@ float ZU::getSurfaceConstructible() const
     return this->surface * this->pourcentageConstructible/ 100.0f - surfaceConstruite;
 }
 
+std::string ZU::serialize() const
+{
+    std::string result = this->type;
+    result += " " + std::to_string(this->numero);
+    result += " " + this->proprietaire;
+    result += " " + std::to_string(this->pourcentageConstructible);
+    result += " " + std::to_string(this->surfaceConstruite);
+    result += "\n" + this->forme.serialize();
+    result += "\n";
+    return result;
+}
+
 ZU ZU::deserialize(std::string input)
 {
     int nl_pos = input.find('\n', 0);

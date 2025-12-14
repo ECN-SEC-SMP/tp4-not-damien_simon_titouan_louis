@@ -6,9 +6,16 @@
 
 class ZAU: public Constructible{
     public:
-        ZAU(int num, std::string prop, Polygone<float> forme, float pourcentageConstructible);
+        ZAU(int num, std::string prop, Polygone<float> forme, int pourcentageConstructible);
         ZAU(const ZAU & zau);  
         ~ZAU();  
+
+    /**
+     * @brief Serialize la parcelle pour l'écriture dans un fichier
+     *
+     * @return std::string
+     */
+    std::string serialize() const;
 
     /**
      * @brief Désérialise l'objet pour la lecture d'un fichier

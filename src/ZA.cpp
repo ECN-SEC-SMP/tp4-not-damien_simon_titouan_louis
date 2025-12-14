@@ -26,6 +26,18 @@ bool ZA::constructible(Polygone<float> surface_a_construire)
     return constructible;
 }
 
+std::string ZA::serialize() const
+{
+    std::string result = this->type;
+    result += " " + std::to_string(this->numero);
+    result += " " + this->proprietaire;
+    result += " " + std::to_string(this->typeCulture);
+    result += " " + std::to_string(this->pourcentageConstructible);
+    result += "\n" + this->forme.serialize();
+    result += "\n";
+    return result;
+}
+
 ZA ZA::deserialize(std::string input)
 {
     int nl_pos = input.find('\n', 0);

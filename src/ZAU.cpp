@@ -1,7 +1,7 @@
 #include "ZAU.hpp"
 
 // Constructors
-ZAU::ZAU(int num, std::string prop, Polygone<float> forme, float pourcentageConstructible)
+ZAU::ZAU(int num, std::string prop, Polygone<float> forme, int pourcentageConstructible)
 : Parcelle(num, prop, forme),      // <-- Appel direct à Parcelle
   Constructible(num, prop, forme)   
 {
@@ -18,6 +18,17 @@ ZAU::ZAU(const ZAU & zau)
 }
 
 ZAU::~ZAU() = default;
+
+std::string ZAU::serialize() const
+{
+    std::string result = this->type;
+    result += " " + std::to_string(this->numero);
+    result += " " + this->proprietaire;
+    result += " " + std::to_string(this->pourcentageConstructible);
+    result += "\n" + this->forme.serialize();
+    result += "\n";
+    return result;
+}
 
 ZAU ZAU::deserialize(std::string input)
 {

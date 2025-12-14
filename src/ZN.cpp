@@ -12,6 +12,16 @@ ZN::ZN(const ZN &zn)
 
 ZN::~ZN() = default;
 
+std::string ZN::serialize() const
+{
+    std::string result = this->type;
+    result += " " + std::to_string(this->numero);
+    result += " " + this->proprietaire;
+    result += "\n" + this->forme.serialize();
+    result += "\n";
+    return result;
+}
+
 ZN ZN::deserialize(std::string input)
 {
     int nl_pos = input.find('\n', 0);
