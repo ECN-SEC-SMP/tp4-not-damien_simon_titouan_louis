@@ -12,6 +12,24 @@ ZN::ZN(const ZN &zn)
 
 ZN::~ZN() = default;
 
+ZN ZN::deserialize(std::string input)
+{
+    int nl_pos = input.find('\n', 0);
+    std::istringstream in(input.substr(0, nl_pos));
+    std::string type;
+    int numero;
+    std::string proprietaire;
+
+    in >> type;
+    in.ignore(1, ' ');
+    in >> numero;
+    in.ignore(1, ' ');
+    in >> proprietaire;
+
+    auto forme = Polygone<float>::deserialize(input.substr(nl_pos+1, input.npos));
+    return ZN(numero, proprietaire, forme);
+}
+
 std::ostream &operator<<(std::ostream &out, ZN const &zn)
 {
     out << zn.toString() << std::endl;

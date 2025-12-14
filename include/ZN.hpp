@@ -11,5 +11,13 @@ public:
     ZN(const ZN &zn);
     ~ZN();
 
+    /**
+     * @brief Désérialise l'objet pour la lecture d'un fichier
+     * 
+     * @param input (IN) String à désérialiser
+     * @return ZN 
+     */
+    static ZN deserialize(std::string input);
+
     friend std::ostream &operator<<(std::ostream &out, ZN const &zn);
 };

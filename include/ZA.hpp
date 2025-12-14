@@ -42,5 +42,13 @@ public:
      */
     bool constructible(Polygone<float> surface_a_construire);
 
+    /**
+     * @brief Désérialise l'objet pour la lecture d'un fichier
+     * 
+     * @param input (IN) String à désérialiser
+     * @return ZA
+     */
+    static ZA deserialize(std::string input);
+
     friend std::ostream &operator<<(std::ostream &out, ZA const &za);
 };

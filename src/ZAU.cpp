@@ -19,3 +19,23 @@ ZAU::ZAU(const ZAU & zau)
 
 ZAU::~ZAU() = default;
 
+ZAU ZAU::deserialize(std::string input)
+{
+    int nl_pos = input.find('\n', 0);
+    std::istringstream in(input.substr(0, nl_pos));
+    std::string type;
+    int numero;
+    std::string proprietaire;
+    int pConstructible;
+
+    in >> type;
+    in.ignore(1, ' ');
+    in >> numero;
+    in.ignore(1, ' ');
+    in >> proprietaire;
+    in.ignore(1, ' ');
+    in >> pConstructible;
+
+    auto forme = Polygone<float>::deserialize(input.substr(nl_pos+1, input.npos));
+    return ZAU(numero, proprietaire, forme, pConstructible);
+}

@@ -12,5 +12,13 @@ class ZU: public Constructible{
     ZU(const ZU & zu);
     ~ZU();
 
+    /**
+     * @brief Désérialise l'objet pour la lecture d'un fichier
+     * 
+     * @param input (IN) String à désérialiser
+     * @return ZU 
+     */
+    static ZU deserialize(std::string input);
+
     float getSurfaceConstructible() const ;
 };
