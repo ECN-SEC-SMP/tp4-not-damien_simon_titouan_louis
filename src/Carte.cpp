@@ -11,7 +11,7 @@
 
 Carte::Carte() {} 
 
-Carte::Carte(std::vector< Parcelle > const& ListeParcelles)
+Carte::Carte(std::vector< Parcelle *> const& ListeParcelles)
     : Parcelles(ListeParcelles) {}
 
 void Carte::save(std::string filename)
@@ -19,7 +19,7 @@ void Carte::save(std::string filename)
     std::ofstream file(filename);
     for (auto &&parcelle : this->Parcelles)
     {
-        file << parcelle.serialize();
+        file << parcelle->serialize();
     }
     file.close();
 }
@@ -43,19 +43,19 @@ void Carte::load(std::string filename)
 
         if (type == "ZN") // ZN
         {
-            this->Parcelles.push_back(ZN::deserialize(str));
+            this->Parcelles.push_back(new ZN(ZN::deserialize(str)));
         }
         else if (type == "ZA") // ZA
         {
-            this->Parcelles.push_back(ZA::deserialize(str));
+            this->Parcelles.push_back(new ZA(ZA::deserialize(str)));
         }
         else if (type == "ZAU") // ZAU
         {
-            this->Parcelles.push_back(ZAU::deserialize(str));
+            this->Parcelles.push_back(new ZAU(ZAU::deserialize(str)));
         }
         else if (type == "ZU") // ZU
         {
-            this->Parcelles.push_back(ZU::deserialize(str));
+            this->Parcelles.push_back(new ZU(ZU::deserialize(str)));
         }
         else
         {

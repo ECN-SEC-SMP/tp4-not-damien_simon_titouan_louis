@@ -23,12 +23,12 @@ int main(int argc, char const *argv[])
     // std::cout << za << std::endl;
 
     // Polygone<float> zone({Point2D<float>(0, 0), Point2D<float>(1, 0), Point2D<float>(1, 1), Point2D<float>(0, 1)});
-    ZAU zau(3, "Moiii", zone, 50.0f);
+    ZAU zau(3, "Moiii", zone, 20);
     zau.getSurfaceConstructible();
     // std::cout << zau << std::endl;
 
     // Polygone<float> zone({Point2D<float>(0, 0), Point2D<float>(1, 0), Point2D<float>(1, 1), Point2D<float>(0, 1)});
-    ZU zu(4, "Moiiii", zone, 15.0f,10.0f);
+    ZU zu(4, "Moiiii", zone, 15.0f, 30);
     // std::cout << zu << std::endl;
 
     parcelles.push_back(zn);
@@ -41,10 +41,10 @@ int main(int argc, char const *argv[])
         std::cout << parcelle << std::endl;
     }
     
-    Carte carte({za, zau, zu, zn});
+    Carte carte({&za, &zau, &zu, &zn});
     carte.save("carte.txt");
-    carte.load("carte.txt");
-    carte.save("carte.txt");
+    // carte.load("carte.txt");
+    // carte.save("carte.txt");
 
     return 0;
 }
