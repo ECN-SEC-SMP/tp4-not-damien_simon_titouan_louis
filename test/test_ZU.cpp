@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
-#include "ZU.hpp"
 #include <vector>
 
-TEST(ZUTest, DefaultConstructor) {
+#include "ZU.hpp"
+
+TEST(ZUTest, Constructor) {
     std::vector<Point2D<float>> points;
     points.push_back(Point2D<float>(0, 0));
     points.push_back(Point2D<float>(1, 0));
@@ -11,7 +12,7 @@ TEST(ZUTest, DefaultConstructor) {
     
     Polygone<float> carre(points);
 
-    ZU zu(3, std::string("TESTZU"), carre, 0.5f);
+    ZU zu(3, "TESTZU", carre, 2.0f, 50);
     EXPECT_EQ(zu.getType(), "ZU");
     EXPECT_EQ(zu.getNumero(), 3);
     EXPECT_EQ(zu.getProprietaire(), "TESTZU");

@@ -2,7 +2,7 @@
 #include "ZAU.hpp"
 #include <vector>
 
-TEST(ZAUTest, DefaultConstructor) {
+TEST(ZAUTest, Constructor) {
     std::vector<Point2D<float>> points;
     points.push_back(Point2D<float>(0, 0));
     points.push_back(Point2D<float>(1, 0));
