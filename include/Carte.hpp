@@ -4,11 +4,12 @@
 #include <string>
 #include "Parcelle.hpp"
 
-class Carte {
+class Carte
+{
 private:
-    /** * @brief Vecteur contenant la liste des parcelles. 
+    /** * @brief Vecteur contenant la liste des parcelles.
      */
-    std::vector< Parcelle *> Parcelles;
+    std::vector<Parcelle *> Parcelles;
 
 public:
     /**
@@ -21,18 +22,15 @@ public:
      * @brief Constructeur avec initialisation.
      * @param listeSommets Un vecteur de Parcelle pour initialiser la carte.
      */
-    Carte(std::vector< Parcelle *> const& ListeParcelles);
-
+    Carte(std::vector<Parcelle *> const &ListeParcelles);
 
     /**
      * @brief Enregistre le fichier.
      */
-    void save(std::string filename); 
-
+    void save(std::string filename);
 
     /**
      * @brief Lit le fichier.
      */
-    void load(std::string filename); 
-
+    void load(std::string filename);
 };

@@ -20,9 +20,9 @@ public:
 
     /**
      * @brief Désérialise l'objet pour la lecture d'un fichier
-     * 
+     *
      * @param input (IN) String à désérialiser
-     * @return ZN 
+     * @return ZN
      */
     static ZN deserialize(std::string input);
 

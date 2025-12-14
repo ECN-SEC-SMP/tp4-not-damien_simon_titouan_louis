@@ -9,9 +9,9 @@
 #include "ZAU.hpp"
 #include "ZU.hpp"
 
-Carte::Carte() {} 
+Carte::Carte() {}
 
-Carte::Carte(std::vector< Parcelle *> const& ListeParcelles)
+Carte::Carte(std::vector<Parcelle *> const &ListeParcelles)
     : Parcelles(ListeParcelles) {}
 
 void Carte::save(std::string filename)
@@ -29,7 +29,8 @@ void Carte::load(std::string filename)
     this->Parcelles.clear();
 
     std::ifstream file(filename);
-    std::string str; 
+    std::string str;
+    
     while (std::getline(file, str))
     {
         std::istringstream in(str);

@@ -58,7 +58,7 @@ ZA ZA::deserialize(std::string input)
     in.ignore(1, ' ');
     in >> pConstructible;
 
-    auto forme = Polygone<float>::deserialize(input.substr(nl_pos+1, input.npos));
+    auto forme = Polygone<float>::deserialize(input.substr(nl_pos + 1, input.npos));
     return ZA(numero, proprietaire, forme, (TypeCulture)typeCulture, pConstructible);
 }
 

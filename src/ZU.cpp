@@ -1,23 +1,25 @@
 #include "ZU.hpp"
 
-//Constructors
+// Constructors
 ZU::ZU(int num, std::string prop, Polygone<float> forme, float surfaceConstruite, int pourcentageConstructible)
-: Parcelle(num, prop, forme),Constructible(num, prop, forme), surfaceConstruite(surfaceConstruite) {
+    : Parcelle(num, prop, forme), Constructible(num, prop, forme), surfaceConstruite(surfaceConstruite)
+{
     this->type = "ZU";
     this->pourcentageConstructible = pourcentageConstructible;
 }
 
-ZU::ZU(const ZU & zu)
-: Parcelle(zu.numero, zu.proprietaire, zu.forme), Constructible(zu.numero, zu.proprietaire, zu.forme), surfaceConstruite(zu.surfaceConstruite) {
+ZU::ZU(const ZU &zu)
+    : Parcelle(zu.numero, zu.proprietaire, zu.forme), Constructible(zu.numero, zu.proprietaire, zu.forme), surfaceConstruite(zu.surfaceConstruite)
+{
     this->type = "ZU";
     this->pourcentageConstructible = zu.pourcentageConstructible;
 }
 
 ZU::~ZU() = default;
 
-float ZU::getSurfaceConstructible() const 
+float ZU::getSurfaceConstructible() const
 {
-    return this->surface * this->pourcentageConstructible/ 100.0f - surfaceConstruite;
+    return this->surface * this->pourcentageConstructible / 100.0f - surfaceConstruite;
 }
 
 std::string ZU::serialize() const
@@ -52,7 +54,6 @@ ZU ZU::deserialize(std::string input)
     in.ignore(1, ' ');
     in >> surfaceConstruite;
 
-    auto forme = Polygone<float>::deserialize(input.substr(nl_pos+1, input.npos));
+    auto forme = Polygone<float>::deserialize(input.substr(nl_pos + 1, input.npos));
     return ZU(numero, proprietaire, forme, surfaceConstruite, pConstructible);
 }
-

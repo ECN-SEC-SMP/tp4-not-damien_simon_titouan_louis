@@ -40,7 +40,7 @@ int main(int argc, char const *argv[])
     {
         std::cout << parcelle << std::endl;
     }
-    
+
     Carte carte({&za, &zau, &zu, &zn});
     carte.save("carte.txt");
     // carte.load("carte.txt");

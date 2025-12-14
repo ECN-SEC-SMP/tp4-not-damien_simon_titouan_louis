@@ -8,10 +8,8 @@
 #pragma once
 #include <iostream>
 
-
 template <typename T>
 class Point2D;
-
 
 template <typename T>
 std::ostream &operator<<(std::ostream &, Point2D<T> const &p);
@@ -99,16 +97,16 @@ public:
 
     /**
      * @brief Sérialise le point 2D pour l'écriture dans un fichier
-     * 
-     * @return std::string 
+     *
+     * @return std::string
      */
     std::string serialize() const;
 
     /**
      * @brief Désérialise le point 2D pour la lecture d'un fichier
-     * 
+     *
      * @param input (IN) String à désérialiser
-     * @return Point2D<T> 
+     * @return Point2D<T>
      */
     static Point2D<T> deserialize(std::string input);
 
@@ -121,11 +119,10 @@ public:
     friend std::ostream &operator<< <T>(std::ostream &s, Point2D<T> const &p);
 };
 
-
 // Implémentation des méthodes
 
 template <typename T>
-Point2D<T>::Point2D() : x(0), y(0) 
+Point2D<T>::Point2D() : x(0), y(0)
 {
     // Initialisation par défaut à 0
 }
@@ -138,7 +135,7 @@ Point2D<T>::Point2D(T x, T y)
 }
 
 template <typename T>
-Point2D<T>::Point2D(Point2D<T> const &p) : x(p.x), y(p.y) 
+Point2D<T>::Point2D(Point2D<T> const &p) : x(p.x), y(p.y)
 {
     // Copie effectuée via la liste d'initialisation
 }
@@ -193,14 +190,14 @@ std::string Point2D<T>::serialize() const
 }
 
 template <typename T>
-Point2D<T> Point2D<T>::deserialize(std::string input) 
+Point2D<T> Point2D<T>::deserialize(std::string input)
 {
     T x, y;
     std::istringstream strstr(input);
     strstr >> x;
     strstr.ignore(1, ',');
     strstr >> y;
-    
+
     return Point2D<T>(x, y);
 }
 

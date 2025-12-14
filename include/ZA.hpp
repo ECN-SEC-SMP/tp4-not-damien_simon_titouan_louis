@@ -51,7 +51,7 @@ public:
 
     /**
      * @brief Désérialise l'objet pour la lecture d'un fichier
-     * 
+     *
      * @param input (IN) String à désérialiser
      * @return ZA
      */

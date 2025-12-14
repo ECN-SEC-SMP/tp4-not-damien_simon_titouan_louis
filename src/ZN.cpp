@@ -36,7 +36,7 @@ ZN ZN::deserialize(std::string input)
     in.ignore(1, ' ');
     in >> proprietaire;
 
-    auto forme = Polygone<float>::deserialize(input.substr(nl_pos+1, input.npos));
+    auto forme = Polygone<float>::deserialize(input.substr(nl_pos + 1, input.npos));
     return ZN(numero, proprietaire, forme);
 }
 
