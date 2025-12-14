@@ -1,9 +1,5 @@
 # Compte Rendu - TP4 : Gestion de Parcelles avec Héritage
-**Louis VAILLANT,
-Damien BUREAU,
-Titouan COPIN,
-Simon CAU**
-
+> **Louis VAILLANT, Damien BUREAU, Titouan COPIN, Simon CAU**
 
 
 ## 1. Structure du Code et Diagramme de Classes
@@ -12,7 +8,7 @@ Simon CAU**
 
 Le projet implémente un système de gestion de parcelles en utilisant une hiérarchie de classes C++ avec héritage. L'architecture est organisée en trois niveaux :
 
-![Diagramme de classes UML](./Diagramme.png)
+![Diagramme de classes UML](./Parcelle_Class_Diagram.png)
 
 ### 1.2 Classes de Base
 
@@ -53,6 +49,14 @@ La classe point2D représente un point dans le plan cartésien composé de deux 
 - Parcelle agricole avec culture spécifique
 - Attribut : `typeCulture` (enum : BLE, MAIS, CHANVRE, VACHE, COCHON)
 
+### 1.4 Sérialisation et désérialisation
+
+Afin de simplifier l'implémentation des méthodes save() et load() de la classe Carte, nous avons fait le choix d'ajouter une méthode abstraite à la classe Parcelle pour la sérialisation. Celle-ci sera redéfinie dans les classes filles pour une implémentation plus spécifique. Chaque classe filles (ZN, ZA, ZAU et ZU) a également une méthode statique pour la désérialisation. Cela complexifie légèrement les classes, mais simplifie grandement le reste en plus de permettre un code plus propre. En effet, la façon de sérialiser et désérialiser est propre à chaque classe. Il est donc plus logique que ces fonctionnalités soient implémentées directement dans les classes en question.
+
+```
+Class --Serialization--> file --Deserialization--> Class
+```
+
 ## 2. Intérêt de l'Héritage
 
 ### 2.1 Héritage Simple
@@ -77,7 +81,10 @@ L'héritage virtuel de `Constructible` depuis `Parcelle` est **crucial** pour é
    ZN        Constructible
     \            /
      \          /
-         ZA
+      \        /
+       \      /
+        \    /
+          ZA
 ```
 
 **Sans héritage virtuel** : `ZA` aurait **deux copies** de `Parcelle` → ambiguïté
