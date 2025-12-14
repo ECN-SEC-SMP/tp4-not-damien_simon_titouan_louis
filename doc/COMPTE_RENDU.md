@@ -16,11 +16,14 @@ Le projet implémente un système de gestion de parcelles en utilisant une hiér
 
 ### 1.2 Classes de Base
 
-**Point2D\<T\>** : Représente un point dans un plan 2D avec des coordonnées génériques.
+**Point2D\<T\>** : 
+La classe point2D représente un point dans le plan cartésien composé de deux coordonnées x et y qui sont en template comme demandé dans le sujet du TP. La classe possède un constructeur par défault, par paramètres ou par recopie. On a codé des méthodes translate pour pouvoir déplacer un point, soit sur un seul axe, soit sur les deux en même temps. 
+
 - Attributs : `x: T`, `y: T`
 - Méthodes : constructeurs, getters/setters, `translate()`
 
-**Polygone\<T\>** : Représente une forme géométrique composée de sommets.
+**Polygone\<T\>** : La classe Polygone regroupe une série de points pour former une figure géométrique complète. Elle gère une liste ordonnée de sommets. Afin de stocker les points, nous avons décidé d'utiliser un std::vector afin de pouvoir facilement ajouter et retirer des points. On gère dans cette classe le calcul de la surface en utilisant la formule donnée dans le TP.
+
 - Attributs : `sommets: vector<Point2D<T>>`
 - Méthodes : gestion des sommets, `getSurface()`, `translate()`
 
@@ -115,6 +118,58 @@ Les tests utilisent **Google Test** (gtest) et sont organisés par classe.
 2. **Détection de régressions** : Les tests échouent si une modification casse du code existant
 3. **Documentation vivante** : Les tests montrent comment utiliser les classes
 4. **Confiance dans le code** : Permet de refactoriser en toute sécurité
+
+### Test unitaire de chaque classe :
+
+***Point2D:***
+ Le test de la classe Point2D permet de tester le bon fonctionnement des constructeurs, des méthodes de translations et de l'utilisation des templates.
+
+Sortie console :
+
+```
+[----------] 8 tests from Point2DTest
+[ RUN      ] Point2DTest.constructeurdefault
+[       OK ] Point2DTest.constructeurdefault (0 ms)
+[ RUN      ] Point2DTest.constructeurs
+[       OK ] Point2DTest.constructeurs (0 ms)
+[ RUN      ] Point2DTest.copie
+[       OK ] Point2DTest.copie (0 ms)
+[ RUN      ] Point2DTest.set
+[       OK ] Point2DTest.set (0 ms)
+[ RUN      ] Point2DTest.translateX
+[       OK ] Point2DTest.translateX (0 ms)
+[ RUN      ] Point2DTest.translateY
+[       OK ] Point2DTest.translateY (0 ms)
+[ RUN      ] Point2DTest.translate
+[       OK ] Point2DTest.translate (0 ms)
+[ RUN      ] Point2DTest.testdouble
+[       OK ] Point2DTest.testdouble (0 ms)
+[----------] 8 tests from Point2DTest (0 ms total)
+```
+
+***Polygone:***
+ Le test de la classe Polygone permet de tester le bon fonctionnement des constructeurs, des methodes de translations et de l'utilisation des templates. De plus, il permet de tester une consigne du TP qui est de faire une copie en profondeur lors de l'appel du constructeur par copie.
+
+ Sortie console :
+
+```
+[----------] 7 tests from PolygoneTest
+[ RUN      ] PolygoneTest.Constructeur
+[       OK ] PolygoneTest.Constructeur (0 ms)
+[ RUN      ] PolygoneTest.Constructeurtriangle
+[       OK ] PolygoneTest.Constructeurtriangle (0 ms)
+[ RUN      ] PolygoneTest.add
+[       OK ] PolygoneTest.add (0 ms)
+[ RUN      ] PolygoneTest.replace
+[       OK ] PolygoneTest.replace (0 ms)
+[ RUN      ] PolygoneTest.translate
+[       OK ] PolygoneTest.translate (0 ms)
+[ RUN      ] PolygoneTest.surface
+[       OK ] PolygoneTest.surface (0 ms)
+[ RUN      ] PolygoneTest.copieprof
+[       OK ] PolygoneTest.copieprof (0 ms)
+[----------] 7 tests from PolygoneTest (0 ms total)
+```
 
 ## 4. Problèmes Rencontrés et Solutions
 
