@@ -1,103 +1,127 @@
-@startuml Class Diagram
+@startuml Parcelle_Class_Diagram
 
-class Point2D <T> {
-    - x: T
-    - y: T
+class "Point2D<T>" as Point2D {
+  - x: T
+  - y: T
 
-    + Point2D (T x, T y)
-    + Point2D()
-    + Point2D(Point2D<T> p)
-    + getX( ) : T
-    + getY( ) : T
-    + setX(T y) : void
-    + setY(T y) : void
-    + translate(T x, T y) : void
+  + Point2D(T x, T y)
+  + Point2D()
+  + Point2D(Point2D<T> p)
+  + getX(): T
+  + getY(): T
+  + setX(T): void
+  + setY(T): void
+  + translate(T, T): void
 }
 
-class Polygone <T> {
-    - sommets : Vector<Point2D<T>>
+class "Polygone<T>" as Polygone {
+  - sommets: Vector<Point2D<T>>
 
-    + Polygone( )
-    + Polygone(Vector<Point2D<T>> listeSommets)
-    + Polygone(Polygone<T> poly)
-    + getSommets( ) : Vector<Point2D<T>>
-    + setSommets(Vector<Point2D<T>> listeSommets) : void
-    + addSommet(Point2D<T>) : void
-    + translate(T x, T y) : void
-    + getSurface(): float
+  + Polygone()
+  + Polygone(Vector<Point2D<T>>)
+  + Polygone(Polygone<T>)
+  + getSommets(): Vector<Point2D<T>>
+  + setSommets(Vector<Point2D<T>>): void
+  + addSommet(Point2D<T>): void
+  + translate(T, T): void
+  + getSurface(): float
+  + serialize(): string
+  + deserialize(string): Polygone<T>
 }
-
 
 class Parcelle {
-    # type : string
-    # numero : int
-    # proprietaire : string
-    # surface : float
-    # forme : Polygone<float>
-    # pourcentageConstructible : int
+  # type: string
+  # numero: int
+  # proprietaire: string
+  # surface: float
+  # forme: Polygone<float>
+  # pourcentageConstructible: int
 
-    + Parcelle(int num, string prop, Polygone<float> forme)
-    + Parcelle(Parcelle parc)
-    + getNumero() : int
-    + getProprietaire( ) : string
-    + getSurface( ) : float
-    + getForme( ) : Polygone<float>
-    + getType( ) : string
-    + setNumero(int n) : void
-    + setProprietaire(string prop ) : void
-    + setForme(Polygone<int> forme) : void
-    + toString() : string
-    {abstract} + serialize() : string
+  + Parcelle(int, string, Polygone<float>)
+  + Parcelle(Parcelle)
+  + getNumero(): int
+  + getProprietaire(): string
+  + getSurface(): float
+  + getForme(): Polygone<float>
+  + getType(): string
+  + setNumero(int): void
+  + setProprietaire(string): void
+  + setForme(Polygone<float>): void
+  + toString(): string
+  {abstract} + serialize(): string
 }
 
-class Constructible extends Parcelle {
-    + Constructible(int num, string prop, Polygone<float> forme, float pourcentageConstructible)
-    + Constructible( const Constructible& constructible )
-    + getSurfaceConstructible() : float const
+class Constructible {
+  + Constructible(int, string, Polygone<float>)
+  + Constructible(Constructible)
+  + getSurfaceConstructible(): float
 }
 
-class ZU extends Constructible {
-    - surfaceConstruite: float
-    + ZU(int num, string prop, Polygone<float> forme, float surfaceConstruite, int pourcentageConstructible);
-    + ZU(const ZU & zu);
+class ZN {
+  + ZN(int, string, Polygone<float>)
+  + ZN(ZN)
+  ..
+  + serialize(): string
+  {static} + deserialize(string): ZN
 }
 
-class ZAU extends Constructible {
-    + ZAU(int num, string prop, Polygone<float> forme, float pourcentageConstructible)
-    + ZAU(const ZAU & zau)
+class ZA {
+  - typeCulture: TypeCulture
+  + ZA(int, string, Polygone<float>, TypeCulture, int)
+  + ZA(ZA)
+  + getTypeCulture(): TypeCulture
+  + constructible(Polygone<float>): bool
+  ..
+  + serialize(): string
+  {static} + deserialize(string): ZA
 }
 
-class ZN extends Parcelle {
-    + ZN(int num, string prop, Polygone<float> forme)
-    + ZN(const ZN &zn)
+class ZAU {
+  + ZAU(int, string, Polygone<float>, float)
+  + ZAU(ZAU)
+  ..
+  + serialize(): string
+  {static} + deserialize(string): ZAU
 }
 
-class ZA extends ZN, Constructible {
-    - TypeCulture typeCulture
-    + getTypeCulture(): TypeCulture
-    + constructible(Polygone<float> zone)
-}
-
-enum TypeCulture {
-    BLE
-    MAIS
-    CHANVRE
-    VACHE
-    COCHON
+class ZU {
+  - surfaceConstruite: float
+  + ZU(int, string, Polygone<float>, float, int)
+  + ZU(ZU)
+  + getSurfaceConstructible(): float
+  ..
+  + serialize(): string
+  {static} + deserialize(string): ZU
 }
 
 class Carte {
-    - parcelles : vector<Parcelle>
-    + save(string file) : void
-    + load(string file) : void
+  - parcelles: vector<Parcelle>
+  + save(string): void
+  + load(string): void
 }
 
+enum TypeCulture {
+  BLE
+  MAIS
+  CHANVRE
+  VACHE
+  COCHON
+}
 
-Polygone "0..n" --> "0..n" Point2D
+' Inheritance & virtual inheritance
+Constructible --|> Parcelle : «virtual»
+ZN --|> Parcelle : «virtual»
+ZA --|> ZN
+ZA --|> Constructible
+ZAU --|> Constructible
+ZU --|> Constructible
+
+' Associations
+Polygone "1" o-- "0..n" Point2D
 Parcelle "1" --> "1" Polygone
-
+Carte "1" o-- "0..n" Parcelle
 ZA "1" --> "1" TypeCulture
 
-
-
+' Layout hints
+left to right direction
 @enduml
