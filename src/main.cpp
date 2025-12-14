@@ -44,6 +44,7 @@ int main(int argc, char const *argv[])
     Carte carte({za, zau, zu, zn});
     carte.save("carte.txt");
     carte.load("carte.txt");
+    carte.save("carte.txt");
 
     return 0;
 }
