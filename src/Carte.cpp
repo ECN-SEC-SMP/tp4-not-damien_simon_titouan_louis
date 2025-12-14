@@ -32,43 +32,30 @@ void Carte::load(std::string filename)
     std::string str; 
     while (std::getline(file, str))
     {
-        std::cout << "str: " << str << std::endl;
-
         std::istringstream in(str);
         std::string type;
-        int numero;
-        std::string proprietaire;
-
         in >> type;
-        in.ignore(1, ' ');
-        in >> numero;
-        in.ignore(1, ' ');
-        in >> proprietaire;
 
-        std::cout << "type: " << type << std::endl;
-        std::cout << "numero: " << numero << std::endl;
-        std::cout << "proprietaire: " << proprietaire << std::endl;
+        std::string temp;
+        std::getline(file, temp);
+        str += '\n';
+        str += temp;
 
         if (type == "ZN") // ZN
         {
-            std::getline(file, str);
-            std::cout << "str: " << str << std::endl;
-            auto forme = Polygone<float>::deserialize(str);
+            this->Parcelles.push_back(ZN::deserialize(str));
         }
         else if (type == "ZA") // ZA
         {
-            std::getline(file, str);
-            auto forme = Polygone<float>::deserialize(str);
+            this->Parcelles.push_back(ZA::deserialize(str));
         }
         else if (type == "ZAU") // ZAU
         {
-            std::getline(file, str);
-            auto forme = Polygone<float>::deserialize(str);
+            this->Parcelles.push_back(ZAU::deserialize(str));
         }
         else if (type == "ZU") // ZU
         {
-            std::getline(file, str);
-            auto forme = Polygone<float>::deserialize(str);
+            this->Parcelles.push_back(ZU::deserialize(str));
         }
         else
         {
@@ -76,4 +63,5 @@ void Carte::load(std::string filename)
             std::cerr << "Error: Unknown parcelle type!" << std::endl;
         }
     }
+    file.close();
 }
