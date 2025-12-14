@@ -14,6 +14,7 @@ Projet compilable avec CMake.
 
 ## Tests
 
+Via l'onglet `Testing` de VSCode ou avec les commandes suivantes :
 ```bash
 cd test
 ./run_tests.sh
