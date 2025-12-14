@@ -17,7 +17,6 @@ protected:
 
 public:
     /* Constructors */
-    Parcelle();
     Parcelle(int num, std::string prop, Polygone<float> forme);
     Parcelle(const Parcelle &parc);
     ~Parcelle();

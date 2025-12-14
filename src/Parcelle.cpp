@@ -1,11 +1,6 @@
 #include "Parcelle.hpp"
 
 /* Constructors */
-Parcelle::Parcelle()
-    : type("Inconnu"), numero(0), proprietaire(""), pourcentageConstructible(-1), forme(), surface(0.0f)
-{
-}
-
 Parcelle::Parcelle(int num, std::string prop, Polygone<float> forme)
     : type("Inconnu"), numero(num), proprietaire(prop), pourcentageConstructible(-1)
 {
